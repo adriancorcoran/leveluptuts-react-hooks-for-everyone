@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+// useEffect is called after react has finished updating the dom (i.e. after the render is complete)
+
+import React, { useState, useEffect } from "react";
 import Toggle from "./Toggle";
 
 const App = () => {
   // const [value, setValue] = useState(initialState);
   const [name, setName] = useState("");
+
+  useEffect(() => {
+    document.title = name;
+  });
 
   return (
     <div className="main-wrapper">
@@ -12,7 +18,7 @@ const App = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          formSubmit(name, setName);
+          // formSubmit(name, setName);
         }}
       >
         <input
@@ -26,9 +32,9 @@ const App = () => {
   );
 };
 
-const formSubmit = (value, setValue) => {
-  console.log(`email sent to ${value}!`);
-  setValue("");
-};
+// const formSubmit = (value, setValue) => {
+//   console.log(`email sent to ${value}!`);
+//   setValue("");
+// };
 
 export default App;
